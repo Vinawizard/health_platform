@@ -1,0 +1,27 @@
+﻿On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+No commands done.
+Next command to do (1 remaining command):
+   pick 043bacc # max30102 update
+  (use "git rebase --edit-todo" to view and edit)
+You are currently editing a commit while rebasing branch 'main' on 'c5a6e71'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   backend/app/models.py
+	deleted:    backend/app/routes.py
+	deleted:    esp32/main/main2/main2.ino
+	deleted:    esp8266/main/main3/main3.ino
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git_status_output.txt
+	status2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")

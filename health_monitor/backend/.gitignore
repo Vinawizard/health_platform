@@ -1,0 +1,13 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Backend Environment
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Ide / Editor
+.vscode/
+.idea/
