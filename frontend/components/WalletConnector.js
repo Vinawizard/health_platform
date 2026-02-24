@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 
 const DEFAULT_WALLET = 'addr_test1vzasxjyws8a0n7xuq0ycmcvzqdf32dqsv7vrkljlkege8fc5m82m7';
 
-// Dynamic import for SSR safety — this library accesses `window`
 const ConnectWalletList = dynamic(
     () =>
         import('@cardano-foundation/cardano-connect-with-wallet').then(
@@ -69,25 +68,22 @@ export function WalletConnector({ address, walletName, isConnected, isDemo, conn
 
     if (isConnected && compact) {
         return (
-            <div className="wallet" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="flex items-center gap-2">
                 <a
                     href={`https://preprod.cardanoscan.io/address/${address}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="wallet-address"
-                    style={{ textDecoration: 'none' }}
+                    className="text-[11px] font-mono text-primary/80 hover:text-primary bg-primary/5 px-2 py-1 rounded-md transition-colors"
                     title={address}
                 >
-                    {address.slice(0, 12)}...{address.slice(-8)}
+                    {address.slice(0, 10)}...{address.slice(-6)}
                 </a>
-                <div className="badge badge-verified" style={{ gap: '4px' }}>
-                    <div className="dot dot-green" style={{ width: '6px', height: '6px' }}></div>
+                <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded-full bg-accent/10 text-accent">
                     {isDemo ? 'Demo' : walletName}
-                </div>
+                </span>
                 <button
-                    className="btn btn-secondary"
                     onClick={disconnect}
-                    style={{ padding: '6px 12px', fontSize: '12px' }}
+                    className="text-[10px] text-muted-foreground hover:text-foreground px-2 py-1 rounded-md hover:bg-secondary transition-colors"
                 >
                     Disconnect
                 </button>
@@ -97,33 +93,28 @@ export function WalletConnector({ address, walletName, isConnected, isDemo, conn
 
     if (isConnected) {
         return (
-            <div className="card" style={{ maxWidth: '500px', width: '100%' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                        Wallet Connected {isDemo ? '(Demo Mode)' : `via ${walletName}`}
+            <div className="bg-card rounded-xl border border-border p-5 max-w-md w-full">
+                <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs text-muted-foreground">
+                        {isDemo ? 'Demo Wallet Connected' : `Connected via ${walletName}`}
                     </span>
-                    <div className="badge badge-verified">
-                        <div className="dot dot-green" style={{ width: '6px', height: '6px' }}></div>
-                        Active
-                    </div>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-accent/10 text-accent">Active</span>
                 </div>
-                <div className="wallet-address" style={{ width: '100%', wordBreak: 'break-all', fontSize: '12px', marginBottom: '12px' }}>
+                <div className="font-mono text-[11px] text-primary/80 bg-primary/5 rounded-lg p-3 break-all mb-3">
                     {address}
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div className="flex gap-2">
                     <a
                         href={`https://preprod.cardanoscan.io/address/${address}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="chain-link"
-                        style={{ fontSize: '11px' }}
+                        className="text-[11px] text-primary hover:text-primary/80 bg-primary/5 px-3 py-1.5 rounded-md transition-colors"
                     >
                         View on Cardanoscan
                     </a>
                     <button
-                        className="btn btn-secondary"
                         onClick={disconnect}
-                        style={{ padding: '4px 12px', fontSize: '12px' }}
+                        className="text-[11px] text-muted-foreground hover:text-foreground px-3 py-1.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors"
                     >
                         Disconnect
                     </button>
@@ -132,78 +123,70 @@ export function WalletConnector({ address, walletName, isConnected, isDemo, conn
         );
     }
 
-    // Not connected
     return (
-        <div style={{ maxWidth: '500px', width: '100%' }}>
+        <div className="max-w-md w-full">
             {!showPicker ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div className="flex flex-col gap-3">
                     <button
-                        className="btn btn-primary"
                         onClick={() => setShowPicker(true)}
-                        style={{ width: '100%', justifyContent: 'center', padding: '16px 24px', fontSize: '16px' }}
+                        className="w-full py-3.5 px-6 bg-primary text-primary-foreground text-sm font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
                     >
                         Connect Wallet
                     </button>
                     <button
-                        className="btn btn-secondary"
                         onClick={connectDemo}
-                        style={{ width: '100%', justifyContent: 'center', padding: '12px 24px', fontSize: '14px' }}
+                        className="w-full py-3 px-6 bg-card border border-border text-foreground text-sm font-medium rounded-xl hover:bg-card-hover hover:border-primary/30 transition-colors"
                     >
                         Use Demo Wallet (Preprod Testnet)
                     </button>
                 </div>
             ) : (
-                <div className="card" style={{ textAlign: 'left' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                        <h3 style={{ fontSize: '16px', fontWeight: 600 }}>Select a Wallet</h3>
+                <div className="bg-card rounded-xl border border-border p-5">
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-sm font-semibold text-foreground">Select a Wallet</h3>
                         <button
-                            className="btn btn-secondary"
                             onClick={() => setShowPicker(false)}
-                            style={{ padding: '4px 12px', fontSize: '12px' }}
+                            className="text-[11px] text-muted-foreground hover:text-foreground px-2 py-1 rounded-md hover:bg-secondary transition-colors"
                         >
                             Cancel
                         </button>
                     </div>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginBottom: '16px' }}>
-                        Connect a CIP-30 compatible Cardano wallet (Nami, Lace, Eternl, Flint, etc.)
+                    <p className="text-[11px] text-muted-foreground mb-4">
+                        CIP-30 compatible: Nami, Lace, Eternl, Flint, Typhon
                     </p>
                     <ConnectWalletList
                         borderRadius={8}
-                        gap={12}
+                        gap={10}
                         primaryColor="#3b82f6"
-                        onConnect={(walletName, addr) => {
-                            onCIP30Connect(walletName, addr);
+                        onConnect={(name, addr) => {
+                            onCIP30Connect(name, addr);
                             setShowPicker(false);
                         }}
                         customCSS={`
               font-family: 'Inter', sans-serif;
-              font-size: 14px;
+              font-size: 13px;
               font-weight: 600;
               width: 100%;
               & > span {
-                padding: 12px 16px;
-                background: var(--bg-secondary);
-                border: 1px solid var(--border);
+                padding: 10px 14px;
+                background: #111827;
+                border: 1px solid #1e293b;
                 border-radius: 8px;
-                color: var(--text-primary);
+                color: #f1f5f9;
                 transition: all 0.2s ease;
               }
               & > span:hover {
-                border-color: var(--accent-blue);
-                background: var(--bg-card-hover);
+                border-color: rgba(59, 130, 246, 0.3);
+                background: #1a2035;
               }
             `}
                     />
-                    <div style={{ marginTop: '16px', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
+                    <div className="mt-4 pt-4 border-t border-border">
                         <button
-                            className="btn btn-secondary"
-                            onClick={() => {
-                                connectDemo();
-                                setShowPicker(false);
-                            }}
-                            style={{ width: '100%', justifyContent: 'center', fontSize: '13px' }}
+                            onClick={() => { connectDemo(); setShowPicker(false); }}
+                            className="w-full py-2.5 text-xs font-medium text-muted-foreground bg-secondary rounded-lg hover:text-foreground hover:bg-secondary/80 transition-colors"
                         >
-                            No wallet? Use Demo Wallet (Preprod Testnet)
+                            No wallet? Use Demo Wallet
                         </button>
                     </div>
                 </div>
