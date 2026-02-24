@@ -66,6 +66,41 @@ export function useWallet() {
 export function WalletConnector({ address, walletName, isConnected, isDemo, connectDemo, onCIP30Connect, disconnect, compact }) {
     const [showPicker, setShowPicker] = useState(false);
 
+    // Compact mode — disconnected: show small inline buttons
+    if (!isConnected && compact) {
+        return (
+            <div className="flex items-center gap-2">
+                <button
+                    onClick={() => setShowPicker(true)}
+                    className="text-[11px] font-semibold text-primary-foreground bg-primary px-3 py-1.5 rounded-md hover:bg-primary/90 transition-colors"
+                >
+                    Connect Wallet
+                </button>
+                <button
+                    onClick={connectDemo}
+                    className="text-[10px] text-muted-foreground hover:text-foreground px-2 py-1.5 rounded-md border border-border hover:bg-secondary transition-colors"
+                >
+                    Demo
+                </button>
+                {showPicker && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/30 backdrop-blur-sm" onClick={() => setShowPicker(false)}>
+                        <div className="bg-card rounded-xl border border-border p-5 max-w-sm w-full mx-4 shadow-xl" onClick={e => e.stopPropagation()}>
+                            <h3 className="text-sm font-bold text-foreground mb-1">Select a Wallet</h3>
+                            <p className="text-[10px] text-muted-foreground mb-4">Choose a CIP-30 compatible wallet</p>
+                            <ConnectWalletList
+                                onConnect={(name) => { onCIP30Connect(name); setShowPicker(false); }}
+                                dAppName="VitalsIQ"
+                                dAppUrl={typeof window !== 'undefined' ? window.location.origin : ''}
+                            />
+                            <button onClick={() => setShowPicker(false)} className="mt-3 w-full text-xs text-muted-foreground py-2 hover:text-foreground transition-colors">Cancel</button>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
+
+    // Compact mode — connected
     if (isConnected && compact) {
         return (
             <div className="flex items-center gap-2">

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', href: '/patient', active: true },
+    { icon: LayoutDashboard, label: 'Dashboard', href: '/patient' },
     { icon: Shield, label: 'ZKP Proofs', href: '/doctor' },
-    { icon: Users, label: 'Access', href: '/patient' },
-    { icon: FileText, label: 'Reports', href: '/doctor' },
+    { icon: Users, label: 'Access', href: '/patient', match: '___none___' },
+    { icon: FileText, label: 'Reports', href: '/doctor', match: '___none___' },
     { icon: Settings, label: 'Settings', href: '/' },
 ];
 
@@ -17,28 +17,30 @@ export default function Sidebar() {
     return (
         <aside className="hidden lg:flex w-[220px] flex-col bg-card border-r border-border h-screen sticky top-0">
             <div className="p-4 border-b border-border">
-                <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <Activity className="text-primary" size={16} />
+                <Link href="/">
+                    <div className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <Activity className="text-primary" size={16} />
+                        </div>
+                        <div>
+                            <h1 className="text-sm font-bold tracking-tight text-foreground">VitalsIQ</h1>
+                            <p className="text-[10px] text-muted-foreground">IoT Health Platform</p>
+                        </div>
                     </div>
-                    <div>
-                        <h1 className="text-sm font-bold tracking-tight text-foreground">VitalsIQ</h1>
-                        <p className="text-[10px] text-muted-foreground">IoT Health Platform</p>
-                    </div>
-                </div>
+                </Link>
             </div>
 
             <nav className="flex-1 px-3 py-4">
                 <ul className="space-y-1">
                     {navItems.map((item) => {
-                        const isActive = pathname === item.href;
+                        const isActive = pathname === (item.match || item.href);
                         return (
                             <li key={item.label}>
                                 <Link
                                     href={item.href}
                                     className={`flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium transition-colors ${isActive
-                                            ? 'bg-primary/10 text-primary'
-                                            : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                                        ? 'bg-primary/10 text-primary'
+                                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
                                         }`}
                                 >
                                     <item.icon size={16} />
