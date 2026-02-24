@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException, status, BackgroundTasks
 from typing import List
 from datetime import datetime, timedelta
 
-from ..models import PartialSensorData, SensorData, StoredReading
+from ..models import PartialSensorData, SensorData, StoredReading, SpO2Data
 from ..database import STORAGE_MODE, sensor_collection
 from ..crypto_utils import generate_dek, encrypt_payload, encrypt_dek, hash_reading, decrypt_payload
 from ..cardano_anchoring import anchor_hash_on_cardano
@@ -143,6 +143,50 @@ async def create_sensor_data(data: PartialSensorData, background_tasks: Backgrou
             "hash": record_hash,
             "proofs_generated": proof_count,
         }
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
+
+@router.post("/sensor-data/spo2", status_code=status.HTTP_201_CREATED)
+async def create_spo2_data(data: SpO2Data):
+    """
+    Dedicated endpoint for the SpO2 board (MAX30102).
+    Always merges into the latest record since it's a separate Arduino board
+    sending blood oxygen data independently.
+    """
+    try:
+        latest_record = await _get_latest()
+        now = datetime.utcnow()
+
+        if latest_record:
+            # Always merge SpO2 into the latest record
+            record_id = latest_record.get("_id")
+            await _update_latest({
+                "spo2_percent": data.spo2_percent,
+                "timestamp": now,
+            }, record_id)
+            return {
+                "message": f"SpO2 data merged into latest reading (spo2={data.spo2_percent}%)",
+                "id": str(record_id),
+                "device": "MAX30102",
+            }
+        else:
+            # No existing record — create one with just SpO2
+            new_record = {
+                "spo2_percent": data.spo2_percent,
+                "timestamp": now,
+                "anchored": False,
+                "cardano_tx_id": None,
+            }
+            record_id = await _save_new(new_record)
+            return {
+                "message": f"SpO2 reading created (spo2={data.spo2_percent}%)",
+                "id": record_id,
+                "device": "MAX30102",
+            }
 
     except Exception as e:
         import traceback

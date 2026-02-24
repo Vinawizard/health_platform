@@ -7,6 +7,12 @@ from typing import List, Optional
 from datetime import datetime
 
 
+class SpO2Data(BaseModel):
+    """Data from the dedicated SpO2 board (MAX30102)."""
+    spo2_percent: float = Field(..., description="Blood Oxygen Saturation in %")
+    timestamp: Optional[datetime] = Field(default_factory=datetime.utcnow)
+
+
 class SensorData(BaseModel):
     """Full sensor reading — what gets stored after merge."""
     temperature_f: float = Field(..., description="Body Temperature in Fahrenheit")
