@@ -10,13 +10,6 @@ venv/
 env/
 .venv/
 
-# Environment
-.env
-*.skey
-
-# Data (generated at runtime)
-backend/data/
-
 # IDE
 .vscode/
 .idea/
