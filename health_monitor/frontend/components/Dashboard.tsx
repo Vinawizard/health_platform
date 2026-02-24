@@ -1,249 +1,301 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { fetchLatestData, SensorData } from "@/lib/api";
+import { useState, useEffect, useCallback } from "react";
+import { fetchLatestData, fetchHistory, SensorData } from "@/lib/api";
 import ECGGraph from "./ECGGraph";
-import { Thermometer, Heart, Wind, AlertTriangle, Activity, Droplets } from "lucide-react";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
+import VitalCard from "./VitalCard";
+import AlertBanner from "./AlertBanner";
+import VitalsHistory from "./VitalsHistory";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import {
+  Thermometer,
+  Heart,
+  Droplets,
+  Wind,
+  Activity,
+  Clock,
+} from "lucide-react";
 
 export default function Dashboard() {
-    const [data, setData] = useState<SensorData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<SensorData | null>(null);
+  const [history, setHistory] = useState<SensorData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const result = await fetchLatestData();
-                setData(result);
-                setError(null);
-            } catch (err) {
-                setError("Failed to connect to backend API");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadData(); // Initial load
-        const interval = setInterval(loadData, 1000); // Poll every second
-
-        return () => clearInterval(interval);
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="flex items-center justify-center min-h-[60vh]">
-                <div className="animate-spin text-primary">
-                    <Activity size={48} />
-                </div>
-            </div>
-        );
+  const loadData = useCallback(async () => {
+    try {
+      const [latest, hist] = await Promise.all([
+        fetchLatestData(),
+        fetchHistory(),
+      ]);
+      setData(latest);
+      setHistory(hist);
+      setError(null);
+    } catch {
+      setError("Unable to connect to monitoring backend");
+    } finally {
+      setLoading(false);
     }
+  }, []);
 
-    const isTempCritical = data && data.temperature_f > 100;
-    const isBpmCritical = data && data.pulse_bpm > 120;
-    const isSpo2Critical = data && data.spo2_percent < 90;
-    const isAirCritical = data && data.air_quality_ppm > 600;
-    const isAirWarning = data && data.air_quality_ppm > 300 && data.air_quality_ppm <= 600;
+  useEffect(() => {
+    loadData();
+    const interval = setInterval(loadData, 1000);
+    return () => clearInterval(interval);
+  }, [loadData]);
 
-    const hasAlerts = isTempCritical || isBpmCritical || isSpo2Critical || isAirCritical;
+  // Compute alert states
+  const isTempCritical = data ? data.temperature_f > 100 : false;
+  const isBpmCritical = data ? data.pulse_bpm > 120 : false;
+  const isSpo2Critical = data ? data.spo2_percent < 90 : false;
+  const isAirCritical = data ? data.air_quality_ppm > 600 : false;
+  const isAirWarning =
+    data ? data.air_quality_ppm > 300 && data.air_quality_ppm <= 600 : false;
 
+  const alerts: string[] = [];
+  if (isTempCritical && data)
+    alerts.push(`High body temperature (${data.temperature_f.toFixed(1)} F)`);
+  if (isBpmCritical && data)
+    alerts.push(`Tachycardia detected (${data.pulse_bpm} BPM)`);
+  if (isSpo2Critical && data)
+    alerts.push(
+      `Low blood oxygen saturation (${data.spo2_percent.toFixed(1)}%)`
+    );
+  if (isAirCritical && data)
+    alerts.push(
+      `Dangerous air quality (${data.air_quality_ppm.toFixed(1)} PPM)`
+    );
+
+  // Loading state
+  if (loading) {
     return (
-        <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex justify-between items-center mb-8">
-                <div>
-                    <h1 className="text-3xl font-bold text-white tracking-tight">Vitals Dashboard</h1>
-                    <p className="text-slate-400 mt-1">Real-time IoT Patient Monitoring</p>
-                </div>
-                <div className="flex items-center gap-2">
-                    {error ? (
-                        <span className="flex items-center text-danger text-sm font-medium">
-                            <span className="w-2 h-2 rounded-full bg-danger animate-pulse mr-2"></span>
-                            Disconnected
-                        </span>
-                    ) : (
-                        <span className="flex items-center text-success text-sm font-medium">
-                            <span className="w-2 h-2 rounded-full bg-success animate-pulse mr-2"></span>
-                            Live (1Hz)
-                        </span>
-                    )}
-                </div>
+      <div className="flex min-h-screen">
+        <Sidebar />
+        <div className="flex-1 flex flex-col">
+          <Header connected={false} alertCount={0} />
+          <main className="flex-1 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <div className="p-4 bg-primary/10 rounded-2xl">
+                <Activity
+                  className="text-primary animate-pulse"
+                  size={32}
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-sm font-medium text-foreground">
+                  Connecting to sensors...
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Establishing real-time data link
+                </p>
+              </div>
             </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
-            {hasAlerts && (
-                <div className="bg-[#2a1318] border border-[#ef4444]/50 text-[#ef4444] p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center">
-                    <AlertTriangle className="text-[#ef4444] flex-shrink-0" size={24} />
-                    <div className="flex-1">
-                        <h3 className="font-semibold text-[#ef4444]">Critical Alerts Detected</h3>
-                        <ul className="list-disc list-inside text-sm mt-1">
-                            {isTempCritical && <li>High Body Temperature ({data.temperature_f.toFixed(1)}°F)</li>}
-                            {isBpmCritical && <li>Tachycardia Detected ({data.pulse_bpm} BPM)</li>}
-                            {isSpo2Critical && <li>Low Blood Oxygen Saturation ({data.spo2_percent.toFixed(1)}%)</li>}
-                            {isAirCritical && <li>Dangerous Air Quality ({data.air_quality_ppm.toFixed(1)} PPM)</li>}
-                        </ul>
-                    </div>
+  return (
+    <div className="flex min-h-screen bg-background">
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Mobile overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <div
+            className="w-[220px] h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Sidebar />
+          </div>
+        </div>
+      )}
+
+      {/* Main content */}
+      <div className="flex-1 flex flex-col min-w-0">
+        <Header
+          connected={!error}
+          alertCount={alerts.length}
+          onMenuToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
+        />
+
+        <main className="flex-1 p-4 lg:p-6 overflow-auto">
+          <div className="max-w-[1400px] mx-auto space-y-5">
+            {/* Alerts */}
+            <AlertBanner alerts={alerts} />
+
+            {/* Error state */}
+            {error && !data && (
+              <div className="bg-card rounded-lg border border-border p-8 text-center">
+                <div className="p-3 bg-destructive/10 rounded-xl inline-flex mb-3">
+                  <Activity className="text-destructive" size={24} />
                 </div>
-            )}
-
-            {error && (
-                <div className="bg-warning/20 border border-warning/50 text-warning p-4 rounded-xl flex items-center gap-4">
-                    <AlertTriangle size={24} />
-                    <p>{error}</p>
-                </div>
-            )}
-
-            {!data && !error && (
-                <div className="text-center text-slate-400 py-12">No data available</div>
+                <h3 className="text-sm font-semibold text-foreground mb-1">
+                  Connection Lost
+                </h3>
+                <p className="text-xs text-muted-foreground mb-4">
+                  {error}
+                </p>
+                <button
+                  onClick={loadData}
+                  className="px-4 py-2 bg-primary text-primary-foreground text-xs font-medium rounded-md hover:bg-primary/90 transition-colors"
+                >
+                  Retry Connection
+                </button>
+              </div>
             )}
 
             {data && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    { }
-                    <div className={cn(
-                        "glass-card p-4 md:p-5 transition-all duration-300",
-                        isTempCritical ? "border-[#ef4444]/50" : ""
-                    )}>
-                        <div className="flex justify-between items-start mb-3">
-                            <Thermometer className={isTempCritical ? "text-[#ef4444]" : "text-[#38bdf8]"} size={20} />
-                            <span className={cn(
-                                "px-2.5 py-0.5 text-[10px] font-bold tracking-wider rounded-full",
-                                isTempCritical ? "bg-[#3f191f] text-[#ef4444]" : "bg-[#113146] text-[#38bdf8]"
-                            )}>
-                                {isTempCritical ? "ALERT" : "NORMAL"}
-                            </span>
-                        </div>
-                        <div>
-                            <p className="text-xs text-slate-400 font-medium mb-1">Body Temperature</p>
-                            <div className="flex items-baseline gap-1">
-                                <span className={cn(
-                                    "text-3xl font-bold tracking-tight",
-                                    isTempCritical ? "text-[#ef4444]" : "text-white"
-                                )}>
-                                    {data.temperature_f.toFixed(1)}
-                                </span>
-                                <span className="text-sm text-slate-400">°F</span>
-                            </div>
-                        </div>
+              <>
+                {/* Patient info bar */}
+                <div className="flex flex-wrap items-center justify-between gap-3 bg-card rounded-lg border border-border px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
+                      P1
                     </div>
-
-                    { }
-                    <div className={cn(
-                        "glass-card p-4 md:p-5 transition-all duration-300",
-                        isBpmCritical ? "border-[#ef4444]/50" : ""
-                    )}>
-                        <div className="flex justify-between items-start mb-3">
-                            <Heart className={cn(
-                                isBpmCritical ? "text-[#ef4444]" : "text-[#10b981]",
-                                "animate-pulse"
-                            )} size={20} />
-                            <span className={cn(
-                                "px-2.5 py-0.5 text-[10px] font-bold tracking-wider rounded-full",
-                                isBpmCritical ? "bg-[#3f191f] text-[#ef4444]" : "bg-[#103a31] text-[#10b981]"
-                            )}>
-                                {isBpmCritical ? "ALERT" : "NORMAL"}
-                            </span>
-                        </div>
-                        <div>
-                            <p className="text-xs text-slate-400 font-medium mb-1">Heart Rate</p>
-                            <div className="flex items-baseline gap-1">
-                                <span className={cn(
-                                    "text-3xl font-bold tracking-tight",
-                                    isBpmCritical ? "text-[#ef4444]" : "text-white"
-                                )}>
-                                    {data.pulse_bpm}
-                                </span>
-                                <span className="text-sm text-slate-400">BPM</span>
-                            </div>
-                        </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground">
+                        Patient Monitor -- Bed 1
+                      </h3>
+                      <p className="text-[10px] text-muted-foreground">
+                        ESP32 + AD8232 + MAX30102 + MQ135
+                      </p>
                     </div>
-
-                    { }
-                    <div className={cn(
-                        "glass-card p-4 md:p-5 transition-all duration-300",
-                        isSpo2Critical ? "border-[#ef4444]/50" : ""
-                    )}>
-                        <div className="flex justify-between items-start mb-3">
-                            <Droplets className={isSpo2Critical ? "text-[#ef4444]" : "text-[#38bdf8]"} size={20} />
-                            <span className={cn(
-                                "px-2.5 py-0.5 text-[10px] font-bold tracking-wider rounded-full",
-                                isSpo2Critical ? "bg-[#3f191f] text-[#ef4444]" : "bg-[#113146] text-[#38bdf8]"
-                            )}>
-                                {isSpo2Critical ? "ALERT" : "NORMAL"}
-                            </span>
-                        </div>
-                        <div>
-                            <p className="text-xs text-slate-400 font-medium mb-1">SpO2 (Blood Oxygen)</p>
-                            <div className="flex items-baseline gap-1">
-                                <span className={cn(
-                                    "text-3xl font-bold tracking-tight",
-                                    isSpo2Critical ? "text-[#ef4444]" : "text-white"
-                                )}>
-                                    {data.spo2_percent.toFixed(1)}
-                                </span>
-                                <span className="text-sm text-slate-400">%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    { }
-                    <div className={cn(
-                        "glass-card p-4 md:p-5 transition-all duration-300",
-                        isAirCritical ? "border-[#ef4444]/50" :
-                            isAirWarning ? "border-[#f59e0b]/50" : ""
-                    )}>
-                        <div className="flex justify-between items-start mb-3">
-                            <Wind className={
-                                isAirCritical ? "text-[#ef4444]" :
-                                    isAirWarning ? "text-[#f59e0b]" : "text-[#10b981]"
-                            } size={20} />
-                            <span className={cn(
-                                "px-2.5 py-0.5 text-[10px] font-bold tracking-wider rounded-full",
-                                isAirCritical ? "bg-[#3f191f] text-[#ef4444]" :
-                                    isAirWarning ? "bg-[#402a11] text-[#f59e0b]" : "bg-[#103a31] text-[#10b981]"
-                            )}>
-                                {isAirCritical ? "POOR" : isAirWarning ? "FAIR" : "GOOD"}
-                            </span>
-                        </div>
-                        <div>
-                            <p className="text-xs text-slate-400 font-medium mb-1">Air Quality</p>
-                            <div className="flex items-baseline gap-1">
-                                <span className={cn(
-                                    "text-3xl font-bold tracking-tight",
-                                    isAirCritical ? "text-[#ef4444]" :
-                                        isAirWarning ? "text-[#f59e0b]" : "text-white"
-                                )}>
-                                    {data.air_quality_ppm.toFixed(0)}
-                                </span>
-                                <span className="text-sm text-slate-400">PPM</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    { }
-                    <div className="glass-card p-4 md:p-5 md:col-span-2 lg:col-span-4">
-                        <div className="flex justify-between items-center mb-4">
-                            <div className="flex items-center gap-3">
-                                <div className="p-1.5 bg-[#103a31] rounded-md">
-                                    <Activity className="text-[#10b981]" size={16} />
-                                </div>
-                                <div>
-                                    <h3 className="text-sm font-semibold text-white">Live ECG Waveform</h3>
-                                    <p className="text-[10px] text-slate-400">Real-time analog signal (AD8232)</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-[#0b1120] rounded-lg p-3 border border-[#1f2937]">
-                            <ECGGraph data={data.ecg_wave} />
-                        </div>
-                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                    <Clock size={12} />
+                    <span className="font-mono">
+                      Last update:{" "}
+                      {new Date(data.timestamp).toLocaleTimeString()}
+                    </span>
+                  </div>
                 </div>
+
+                {/* Vital cards grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <VitalCard
+                    icon={
+                      <Thermometer
+                        size={18}
+                        className={
+                          isTempCritical
+                            ? "text-destructive"
+                            : "text-primary"
+                        }
+                      />
+                    }
+                    label="Body Temperature"
+                    value={data.temperature_f.toFixed(1)}
+                    unit="F"
+                    status={isTempCritical ? "critical" : "normal"}
+                    statusLabel={isTempCritical ? "Fever" : "Normal"}
+                    subtitle="MLX90614 IR Sensor"
+                  />
+                  <VitalCard
+                    icon={
+                      <Heart
+                        size={18}
+                        className={
+                          isBpmCritical
+                            ? "text-destructive"
+                            : "text-accent"
+                        }
+                      />
+                    }
+                    label="Heart Rate"
+                    value={data.pulse_bpm.toString()}
+                    unit="BPM"
+                    status={isBpmCritical ? "critical" : "normal"}
+                    statusLabel={
+                      isBpmCritical ? "Tachycardia" : "Sinus Rhythm"
+                    }
+                    subtitle="MAX30102 Pulse Oximeter"
+                  />
+                  <VitalCard
+                    icon={
+                      <Droplets
+                        size={18}
+                        className={
+                          isSpo2Critical
+                            ? "text-destructive"
+                            : "text-primary"
+                        }
+                      />
+                    }
+                    label="SpO2 (Blood Oxygen)"
+                    value={data.spo2_percent.toFixed(1)}
+                    unit="%"
+                    status={isSpo2Critical ? "critical" : "normal"}
+                    statusLabel={isSpo2Critical ? "Hypoxia" : "Adequate"}
+                    subtitle="MAX30102 Reflective"
+                  />
+                  <VitalCard
+                    icon={
+                      <Wind
+                        size={18}
+                        className={
+                          isAirCritical
+                            ? "text-destructive"
+                            : isAirWarning
+                            ? "text-warning"
+                            : "text-accent"
+                        }
+                      />
+                    }
+                    label="Air Quality"
+                    value={data.air_quality_ppm.toFixed(0)}
+                    unit="PPM"
+                    status={
+                      isAirCritical
+                        ? "critical"
+                        : isAirWarning
+                        ? "warning"
+                        : "normal"
+                    }
+                    statusLabel={
+                      isAirCritical
+                        ? "Hazardous"
+                        : isAirWarning
+                        ? "Moderate"
+                        : "Clean"
+                    }
+                    subtitle="MQ135 Gas Sensor"
+                  />
+                </div>
+
+                {/* ECG + History row */}
+                <div className="grid grid-cols-1 xl:grid-cols-5 gap-4">
+                  <div className="xl:col-span-3">
+                    <ECGGraph data={data.ecg_wave} />
+                  </div>
+                  <div className="xl:col-span-2">
+                    <VitalsHistory history={history} />
+                  </div>
+                </div>
+
+                {/* Bottom metadata */}
+                <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] text-muted-foreground px-1">
+                  <div className="flex items-center gap-4">
+                    <span>Protocol: HTTPS + TLS 1.3</span>
+                    <span>Sampling: 1 Hz</span>
+                    <span>ECG Samples: {data.ecg_wave.length} pts</span>
+                  </div>
+                  <span className="font-mono">
+                    VitalsIQ v1.0 -- IoT Health Platform
+                  </span>
+                </div>
+              </>
             )}
-        </div>
-    );
+          </div>
+        </main>
+      </div>
+    </div>
+  );
 }

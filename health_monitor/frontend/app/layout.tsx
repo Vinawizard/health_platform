@@ -1,24 +1,41 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+});
 
 export const metadata: Metadata = {
-    title: "IoT Health Monitor",
-    description: "Real-time IoT Health and Environment Monitoring Dashboard",
+  title: "VitalsIQ -- Clinical IoT Monitoring",
+  description:
+    "Real-time IoT patient vitals monitoring dashboard for medical professionals. Track ECG, SpO2, heart rate, temperature, and environmental conditions.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0ea5e9",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={`${inter.variable} font-sans antialiased min-h-screen`}>
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
+      >
+        {children}
+      </body>
+    </html>
+  );
 }
