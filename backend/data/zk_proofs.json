@@ -106,5 +106,2057 @@
     "cardano_verify_url": null,
     "timestamp": "2026-02-24T08:57:05.863132",
     "_id": "proof_8"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "384e6be88678717ba1148fb30a6695460a02045995665b3ff0cef1da4a6e5168",
+    "reading_hash": "9e1ad7365b716cd16257a7b39db89e6338d2f5295fcae83a538a0453d374554a",
+    "timestamp": "2026-02-24T14:46:52.418423",
+    "_id": "proof_9"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "11a1705e98c8b1cf8d29c635d0cf9796581b92c4d21b7e06279b1b3592eee813",
+    "reading_hash": "9e1ad7365b716cd16257a7b39db89e6338d2f5295fcae83a538a0453d374554a",
+    "timestamp": "2026-02-24T14:46:52.418423",
+    "_id": "proof_10"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "3b58e18e431f3879c7ed262ec2035fdbc8a08d98e776bfa816801efb10e3b219",
+    "reading_hash": "9e1ad7365b716cd16257a7b39db89e6338d2f5295fcae83a538a0453d374554a",
+    "timestamp": "2026-02-24T14:46:52.418423",
+    "_id": "proof_11"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "fc627bfdec7007e5f7d06bedb6d2394cb4b0ac068659145cda58f6b0287eb6ff",
+    "reading_hash": "9e1ad7365b716cd16257a7b39db89e6338d2f5295fcae83a538a0453d374554a",
+    "timestamp": "2026-02-24T14:46:52.418423",
+    "_id": "proof_12"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "7284c2e897f77601bedf8cb9ac080388728c95c4588c9d3d3ac0aa902a82bdd6",
+    "reading_hash": "9e1ad7365b716cd16257a7b39db89e6338d2f5295fcae83a538a0453d374554a",
+    "timestamp": "2026-02-24T14:46:52.418423",
+    "_id": "proof_13"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "c22283ec4e5f45d060cfa5ff71fcce5bc3af74d45293f23c6a3c2af7a7155210",
+    "reading_hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
+    "timestamp": "2026-02-24T14:48:23.233545",
+    "_id": "proof_14"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "63e9b8af811aac7248a28cb376722526d3e5b213f5f291a1bbe552a259013360",
+    "reading_hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
+    "timestamp": "2026-02-24T14:48:23.233545",
+    "_id": "proof_15"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "fee35cd23a93db1f00f6519d90e75df6c52e3f5ba08cee5e8742e8298559c64b",
+    "reading_hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
+    "timestamp": "2026-02-24T14:48:23.233545",
+    "_id": "proof_16"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "beae005bfa329ef7676aa037717794643fda883fce23ab7222f396bc4ee08075",
+    "reading_hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
+    "timestamp": "2026-02-24T14:48:23.233545",
+    "_id": "proof_17"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "0ca84111c4d0b2cb5fa31bd5669e46accaf9b09da43ba58f436648291e792c44",
+    "reading_hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
+    "timestamp": "2026-02-24T14:48:23.233545",
+    "_id": "proof_18"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "3952467a7644e5148c237df119117607d5bfa9b9b91fbceeba873fec899a0e95",
+    "reading_hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
+    "timestamp": "2026-02-24T14:48:28.274747",
+    "_id": "proof_19"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "1529f3683ed374c2eec6e6886bf4d59875ecf65e99fac582c81ea4ca9baeafce",
+    "reading_hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
+    "timestamp": "2026-02-24T14:48:28.274747",
+    "_id": "proof_20"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "2233c4a1d9a7853431bbc8095178801425ff40486f5939270a80c43613835aac",
+    "reading_hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
+    "timestamp": "2026-02-24T14:48:28.274747",
+    "_id": "proof_21"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "74c525479beb074d9dde4595703f9aaf18f87d56181bc1476124c473fd2c6d39",
+    "reading_hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
+    "timestamp": "2026-02-24T14:48:28.274747",
+    "_id": "proof_22"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "aad39826712c726eb564f462e0f74113bfa15411a6fac56e6995d42be46270f8",
+    "reading_hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
+    "timestamp": "2026-02-24T14:48:28.274747",
+    "_id": "proof_23"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "51368ade7e0ab69323edcf18bf7e3f250898c4e255b0c30e98bc3b61775f9845",
+    "reading_hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
+    "timestamp": "2026-02-24T14:48:33.338219",
+    "_id": "proof_24"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "ed716af3195f704518684f1922ad4fae7dd5a252a9a1b58c512523c79966c67a",
+    "reading_hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
+    "timestamp": "2026-02-24T14:48:33.338219",
+    "_id": "proof_25"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "27243ac8b323852e9e473c37a41f9d16b7cb686cd32d6cabff2231660decde9d",
+    "reading_hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
+    "timestamp": "2026-02-24T14:48:33.338219",
+    "_id": "proof_26"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "291712f818d77204fa2100dc6a286b37d14d6a82b84618ded4d92ed4efc3039e",
+    "reading_hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
+    "timestamp": "2026-02-24T14:48:33.338219",
+    "_id": "proof_27"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "76fe22974f790243173e5293124635a28fd2dcfce1fbd63411f5a56668c9a061",
+    "reading_hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
+    "timestamp": "2026-02-24T14:48:33.338219",
+    "_id": "proof_28"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "7b327fc7bef73494cd7c91a1c3581d31428302b14f1b768778aa41e9b1bc3eb0",
+    "reading_hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
+    "timestamp": "2026-02-24T14:48:38.396971",
+    "_id": "proof_29"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "9d68f77f776e139ff13fe1a55052e06c538030bca34752850f8b9eeac6db6d17",
+    "reading_hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
+    "timestamp": "2026-02-24T14:48:38.396971",
+    "_id": "proof_30"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "f6eae365e51e59525ef64e90d2376d6b07526840ed7899dc178fda1264eed264",
+    "reading_hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
+    "timestamp": "2026-02-24T14:48:38.396971",
+    "_id": "proof_31"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "654feff0cf0d7383974ee4308ded1cae260ffd423b94ae7ced6e4738bdb5305a",
+    "reading_hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
+    "timestamp": "2026-02-24T14:48:38.396971",
+    "_id": "proof_32"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "7de05f75783cc4db50191726a9a8f87f11aa74d1578bc995f84fd46988c49a36",
+    "reading_hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
+    "timestamp": "2026-02-24T14:48:38.396971",
+    "_id": "proof_33"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "ab4550391e124f7f3461756d20c027efbd50fc3705e1d8c88f6a1747b04df2a2",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_34"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "aa36d43b8de472d5cc847e52c5a4b3f5603b6b6b77cd7f35fe3e285c642e1901",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_35"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "1fc94c05562247a6ee60bf7ae1df61c0740453044b391139e77b7ca04caa6465",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_36"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "c4829827c851ef7aa270ad290046605af8f094a5c41d7ad65a244dee30063952",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_37"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "a84241d73339a9215da1d687ee3b6c3ec9378ebf70c56af811cf40fde2a5c9d0",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_38"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "514fd8b893be70f344efbaf7a2064e963b35fae401d348c71fb55382399ab729",
+    "reading_hash": "095bfa07060fc5be3be0a55d236070a64349bf30d6e2812fc2b239136696d204",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:48:45.452844",
+    "_id": "proof_39"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "a0916fe1ab4d4783f70f92b382608b00c73873d1093f849618f1c53c691b4af4",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "timestamp": "2026-02-24T14:48:50.512068",
+    "_id": "proof_40"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "dc044f8683adf12c681520ee522edfc2f87cdd1894e310a1ed768164e71bd6e5",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "timestamp": "2026-02-24T14:48:50.512068",
+    "_id": "proof_41"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "f5f7202949d92ce62f1cae2d9d06df186a0c98e4e87d5e4660f548cce6eb910c",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "timestamp": "2026-02-24T14:48:50.512068",
+    "_id": "proof_42"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "1c34b8c6e43191f714be0957de485afcafdde6a8e45c2f6c4ed78edbefb6bcd7",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "timestamp": "2026-02-24T14:48:50.512068",
+    "_id": "proof_43"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "e09d7f0c76344791a220c51570072f1db5efe79eeb6c719c96f68ea3f4d2d512",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "timestamp": "2026-02-24T14:48:50.513074",
+    "_id": "proof_44"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "8ded3da00a320c3d4d0311816f2d335098724f394411f4b669739d98a1915796",
+    "reading_hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:48:50.513074",
+    "_id": "proof_45"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "f02ccc6d2a3fa922e7a84bd21fd6ee2b947b1547739cbf2afdd7bad458e6baa7",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_46"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "dc8dcb23a913bbd8f4db53749f15f1e2631141393755150f0d08c19f6867d23d",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_47"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "13b5aec2cd8331a6ed6fcb1471c1988839bac75050a4a47586f097d3a793f18f",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_48"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "4d8ff5036c1e58dc0d34ef08a0ff578b3fb1a8c087b7008e33522b996df58994",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_49"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "f44bb988f8a0ba1991d0625dc34486523a685eeae7363ad51405eb0e8e6844e8",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_50"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "96fd9ffe6a4d51ba1d2bde6246b9aa32e49362059298a511d2c8f5968ed39233",
+    "reading_hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:48:55.549169",
+    "_id": "proof_51"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "9246a06f646f9d2d24792790a0d717aaf1fce88e46c042dc2068b470a1be4a39",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_52"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "78274de835ae680287b530b7db5d473ff473e32522f406352233e7eb7fb03174",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_53"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "e6f69fe58c2d088cc311898b95a29e2ee85ea98f2fb9b89fab7951f0cd08a933",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_54"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "050c3b0fdf9d6075324ed40ddd9c99a64353ec6ab5496ceb544b3be132a1aca1",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_55"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "33e586d9e24ef536d5bc0b194c16e2d2b24c507ba3a20a32df724e13ce949250",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_56"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "b4c6d88f3689af384a8723d136f78920b831bb4042a5942f8ea6cf68637a0645",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_57"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "0f55b43ffcde4da2a6fb75fb95d70fb145eec4c8f89f45b3d259f90ab843c8bb",
+    "reading_hash": "3cd3eaa6568d5c5ef0abba234c54bfa45323d9cadb6545b880d68e9551067797",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:02.599516",
+    "_id": "proof_58"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "a33f9e48adbe6ce926adcf5ad324fbc6ac9d541fe0f17bc6b01ca6bded915654",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_59"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "10f906643304760d0bb9df240c350539f30291b8db4419b0970dc835bfcfd559",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_60"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "8cb86b33a7dd3b58c6573c7ee8b2844a6ced841d6a814ff6b7dab6761ae88f52",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_61"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "2dec417284cc3ed3fe0451ce85ff3c5e5694fe464b9ba65ef059faddcf9d7861",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_62"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "6475dcc58c0f14bee82efb43a9e592ad84bbfa283c9e3bd987690b05ea3c47e1",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_63"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "782f7a41a21304156fe697ba7d94434f315ccc86a02ae1970310c5f6577875c3",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_64"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "74b713513ad5224c666af17619e93b26a586a8fef06af7b950b9731b4d318284",
+    "reading_hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:07.658150",
+    "_id": "proof_65"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "1d3e09388808bb64ad5aacd7d1aa36ed3f2b7bf924e8d3f5e52121d87840d788",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_66"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "f6831b5d01b126b8d83449052f33a108aa89a7d8332e058a89af2d7e9d8089c2",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_67"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "72d764497000126fcb29ddb4edcf3a5224631db628fb678979ac945f0e114276",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_68"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "53cf7e6621dcd6fd438086a208246c27eecefdecc73a1fe4cbcfa4503e070e22",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_69"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "d13736de2b3b1e87b4240383526d9c4f6dcdfa721273401215ee59d3be5c20bf",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_70"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "06459e774b7086a621eb310bd6c1745c03965c00d9ce947d14408cf81e314041",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_71"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "1b1dfd450d18d88cd05f771b176c7ba3042a33d9e06fe58ac1ca4ecfaaa22029",
+    "reading_hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:12.720311",
+    "_id": "proof_72"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "8882b569de491a34e66adadfcc3b77c8aaee4302a60259f970d023affbec0802",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_73"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "3531cfcc4f814eae71475cd96505106f3f0dd4a13784a4e4e5646564a561ba0a",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_74"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "ddb33e2784b2be46c88e4b461f58cc38b5ee89c075b590af6233b8c0105a6ecf",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_75"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "d9b7c39ed9811cc26d05e270540e019088a4ba6f45cef1126cd90ec81f68a8be",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_76"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "de838a59b608eb1d99199b210046dc236ce4872821e5de26c9204b77de10bf5e",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_77"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "b7ca8033e44b2c826f5d1d2f6aaf8c801568cfcbd1abbc518cc816a4e50a12dc",
+    "reading_hash": "91f110daab7500c402d9e49c8efd332aefdf6affe982ad374bf02280d5967dc7",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:19.801104",
+    "_id": "proof_78"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "eaedcb5f7cf5a38f3d30ade40268aed9cbebcfe049749fa74030221fccb5259a",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "timestamp": "2026-02-24T14:49:24.846966",
+    "_id": "proof_79"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "4d44aed0fdd50aff0143ca2b850f7231284210d78145553e356bd380ea55edda",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "timestamp": "2026-02-24T14:49:24.846966",
+    "_id": "proof_80"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "1f5e29ee39d3aca84c23c2a347e779b4715ab49186162fe45d9d4d6c19c123d2",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "timestamp": "2026-02-24T14:49:24.847966",
+    "_id": "proof_81"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "7c7ce289d21949edda70a5a437399fa4a59bcacaee17a8945ecd524c312b8464",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "timestamp": "2026-02-24T14:49:24.847966",
+    "_id": "proof_82"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "948fb628d2df6aab2c64ddf258525ceb2b6e581b816a7dbe583c5ce5a73776e0",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "timestamp": "2026-02-24T14:49:24.847966",
+    "_id": "proof_83"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "acc8a5eaa1018e08dd020f48976a189db569a093c573f81a7dc0a5e572ff7efd",
+    "reading_hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:24.847966",
+    "_id": "proof_84"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "82d2a0dd5001168938468f8f489e12015153b13317d6293782ce2e29a2264156",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_85"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "467fc9889afa0f19822aa2d8975b104d1f0e7e99f2c8db8b3e81440592d7e8f7",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_86"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "5d66a95c0f9725ea3f0ea54cd70f957c2ad9d63e188aaba9a87a5458b7f7f56a",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_87"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "f5b0f9739393f30dc75f3046eba076778a43842179b63de760e181b0e1b569fb",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_88"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "bd43619a3bcd068e6dba796c260b94626f21d5c0d971bfbe6fe4876e270e0794",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_89"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "3f933850cbc9753bf0e2e26671170e0499b009fdaa7336c0f9912c24f07bdb36",
+    "reading_hash": "b8c13fa632f4233243ed494d95ce7b29cbe51d95dc732a591ca8748bd2de5e53",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:29.901096",
+    "_id": "proof_90"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "30ee545c93f5587b7bf20c2c0344662efcfdd6ab87fd101d50e7e44d7b58f4d5",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_91"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "e168d93c78d2c6060d85eb07367f287256c8d84734f145a602ec61f4d7cc0999",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_92"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "814855c75763d583abd265ca617d36e1824ecac878353c38ec5302f926b6ab61",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_93"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "CRITICAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "032725a96af9792a58feae4ba6fbcaf1f7ee6280193ec7a014469010d2e5494f",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_94"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "CRITICAL"
+      }
+    },
+    "proof_hash": "89b860ba06f3a2a9c46b7d40f207125038102fec1d23340fe4339b4bc29471be",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_95"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "AIR_HAZARD",
+    "claim_description": "Air Quality above 1000PPM",
+    "verified": true,
+    "proof_hash": "47b9afa358691304ea983610b9fed67b8ddbd1378d35e5846f85f669a4927a47",
+    "reading_hash": "6b03e0bf95aad485b3f550d686f689b71c2f216e934d5aa47f8cfe78539bd8fc",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:36.969190",
+    "_id": "proof_96"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "ddce78659ff4698f335e7cd5f3e74f0b2687c533573de83cf79f82693597a91e",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "timestamp": "2026-02-24T14:49:42.061556",
+    "_id": "proof_97"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "55d35b52c3b2d695a48f6f05dec4b5ee81e0e890372d0fb1173de23206e4ab88",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "timestamp": "2026-02-24T14:49:42.061556",
+    "_id": "proof_98"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "14c5c405311aef9c2862ae597a10b8e4820ddd5060f8db9c189e0fac383c9c85",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "timestamp": "2026-02-24T14:49:42.061556",
+    "_id": "proof_99"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "CRITICAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "12c04a75199a21cfd03bdbe3ca98f06212d8ea3bd0c9b9e87089db13de17bc31",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "timestamp": "2026-02-24T14:49:42.061556",
+    "_id": "proof_100"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "CRITICAL"
+      }
+    },
+    "proof_hash": "f1b91ade87e66409889dcee0993bf93be693f406b35204e92f0482a80ad32ac7",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "timestamp": "2026-02-24T14:49:42.062555",
+    "_id": "proof_101"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "AIR_HAZARD",
+    "claim_description": "Air Quality above 1000PPM",
+    "verified": true,
+    "proof_hash": "ff5e1fad7bfade2ee15c442eb5f60e66c5f65c29b0977e1c663903fc64042db1",
+    "reading_hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:42.062555",
+    "_id": "proof_102"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "f1727042e28cd9ceb0847459c87f065fa5f984dd8ee23c53c3fd1a88abfc2ac8",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "timestamp": "2026-02-24T14:49:47.133837",
+    "_id": "proof_103"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "3b1dd2b19559f8af3c9d5214cf18ee7330a345eb7c8293e54d1e9a1e7812b2e9",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "timestamp": "2026-02-24T14:49:47.133837",
+    "_id": "proof_104"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "c3c9063cc1b8eedd852982a54e71d49541452ec27865c1cd6d90263047e205c5",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "timestamp": "2026-02-24T14:49:47.134825",
+    "_id": "proof_105"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "CRITICAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "f29113c5f15ddc95f58dd9c8ab47d5b725ac7d9e8a4fb1ac8fe7a18614d4efbf",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "timestamp": "2026-02-24T14:49:47.134825",
+    "_id": "proof_106"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "3/4",
+    "grade": "B",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "CRITICAL"
+      }
+    },
+    "proof_hash": "2548567ca11b9fb1021576708d2f727d8735d15953b692443fc5e5b7ac5517a2",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "timestamp": "2026-02-24T14:49:47.134825",
+    "_id": "proof_107"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "AIR_HAZARD",
+    "claim_description": "Air Quality above 1000PPM",
+    "verified": true,
+    "proof_hash": "8dfe56e24af391e9349fa4b69a675131dd59a2daa18e851c66d77259016f3060",
+    "reading_hash": "1a51c956f90c93c2c61fade9a631a900ce533d67775bfc53da04229e21b4e2ff",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:47.134825",
+    "_id": "proof_108"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "2faceee187b7167eb0176187b14eba9e5a835acc15637d71644b4c659b8de2f5",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_109"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "f590950a91cc4d84e1d6c58bf21e6ac8e93ddbd4720f0f2a2c109cf257a6a5ac",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_110"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "c7f2980f024e384025693526fb42186ddbed7cd5d96bc88ff9d015001a47ce58",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_111"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "c96ef98a88999b622360aac2c173d69797be11c6f0421092d7ef053940bdad2c",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_112"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "1/4",
+    "grade": "F",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "f9ac400215021ef9c6c4eea05b602f47307485628d54d49e9aae8f3be9968a3b",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_113"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "bb7697bae0ad9835282283670ab380c607ca2c9ed7691d3a54c34ec6447aeec7",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_114"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "5d94b8561834c73412788e700f915c813af7caf9c016477af30d89fa24f2b1ff",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_115"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "c16723ee5ff82e0ac58c7db0389b0c53cc7d3bcdaf47e37248be23f29dbb8214",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_116"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "4fd6cc94e3be124c29fce2e7fddace264c5018218faddd98e00f29c5e7cebf71",
+    "reading_hash": "4687f649d862a7069ab455a95101578c652bb2c8f02fdf661a0819fcbeefd724",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:54.207628",
+    "_id": "proof_117"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "ba10fcdab28317015328381f96e4504ef3115b7199cdc14be6c9236645221b17",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_118"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "2d163fc978f1de1a6d9d607c780e2cb66e15ebb69bb54a2fa90c932684025ee9",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_119"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "37b6aa68f3f3c6e23500bb21a7e40901341c1d8c37c7a2f455fcd616b5161f51",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_120"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "5d9ad2915a310ac1a57f73e21abf4b38620d132b77bbc1c1458d9099c57bce60",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_121"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "1/4",
+    "grade": "F",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "c60d52f287884458cc97251e5944974f9ffd3a6f330be91cf52d5e4849f421dd",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_122"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "12e367b5ee789f9aead220e6f21b39ca5fcfd6b330c4870fa908ca8d4a7efd15",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_123"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "4aa2f661364ea873a1766d209c69c43125467a1e09823af842825516778a218f",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_124"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "a534aaec1d2b9ea42bb671950a05dd9b24b936b753c14825b3dcf3b405d3b646",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_125"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "ec9a1f0ae5148d5257f9ef67633de36301e331d22da4ab0433cf9d99cc4cd1d9",
+    "reading_hash": "9331ebea21ba494a844e08513e349853a574c4c5d4deca30300169a5fad9335f",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:49:59.267714",
+    "_id": "proof_126"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "CRITICAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "3eac3ba09fa3faaa66a5ed89e3f0181dadcf6895e90347d82c191d8c0e7d01a3",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_127"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "WARNING",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "f0f5029ef7023faf751f34cdee1155ab42695d36dbb570b704e18f7cc6ff6414",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_128"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "CRITICAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "20d2645d65cfbdae1b852bf27cc8f8f4df5ce93d32a22a6eca8734f5f24d65ec",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_129"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "cd929dd92928da0272a07614792288823db87ebd9c64dad2c408176b49b3d277",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_130"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "1/4",
+    "grade": "F",
+    "all_normal": false,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "CRITICAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "WARNING"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "CRITICAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "da8344a7a88ff9c60a0186445311763d99488f59d3852ee83e151fa078cd3e29",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_131"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 90%",
+    "verified": true,
+    "proof_hash": "6485ab0b0644bc206f4aa688c56e8a6ebc3be7894da26adcabaa6f49c94a5b15",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_132"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "MILD_HYPOXIA",
+    "claim_description": "Blood Oxygen (SpO2) below 95%",
+    "verified": true,
+    "proof_hash": "95ecdb696250e2276b0e304371a5e03ae4ce8e227cf197c8c0d9213d3a09e5e7",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_133"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "FEVER",
+    "claim_description": "Body Temperature above 100.4\u00b0F",
+    "verified": true,
+    "proof_hash": "ce8a577e94e3f66d88f0fb3d325410fdc8ac7bbd9b763bee3009a61a8a499b0c",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_134"
+  },
+  {
+    "circuit": "insurance_claim_proof",
+    "claim_type": "TACHYCARDIA",
+    "claim_description": "Heart Rate above 100BPM",
+    "verified": true,
+    "proof_hash": "b728ea51be11582eef0ff3b1893d55e54d78c7d033377e412d9e010daa0b8880",
+    "reading_hash": "a92a0532fac38678acbf5bee18ff1a55944c56fb9919d471ba7e929f31b1161b",
+    "cardano_tx_id": null,
+    "cardano_verify_url": null,
+    "timestamp": "2026-02-24T14:50:04.317982",
+    "_id": "proof_135"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "1efc0df77c39af481bca5558eab90b7e7ae7f13e339fbbe42ccc0111f632acf5",
+    "reading_hash": "98d191d8450664a53ccf7a17a164275a08e3f2bdc920ff1b41a06bd7a5530050",
+    "timestamp": "2026-02-24T14:50:11.382709",
+    "_id": "proof_136"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "556c9ae343b198b4eeb09b179cf5c10f8ccbd8546b7853a1513ed24ca1aa4372",
+    "reading_hash": "98d191d8450664a53ccf7a17a164275a08e3f2bdc920ff1b41a06bd7a5530050",
+    "timestamp": "2026-02-24T14:50:11.382709",
+    "_id": "proof_137"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "eec361215ea46198d20e9dba16d30500eb4f1e0f597def9bce7264df562001c0",
+    "reading_hash": "98d191d8450664a53ccf7a17a164275a08e3f2bdc920ff1b41a06bd7a5530050",
+    "timestamp": "2026-02-24T14:50:11.382709",
+    "_id": "proof_138"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "6c419388e88e7159e11c0c939bdee855a76291f730f3355e6d65d2f9783ba8f7",
+    "reading_hash": "98d191d8450664a53ccf7a17a164275a08e3f2bdc920ff1b41a06bd7a5530050",
+    "timestamp": "2026-02-24T14:50:11.382709",
+    "_id": "proof_139"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "944e7300c66fab53d10f0242687c35f622a5a27892a16bad0290d91c10bd4e35",
+    "reading_hash": "98d191d8450664a53ccf7a17a164275a08e3f2bdc920ff1b41a06bd7a5530050",
+    "timestamp": "2026-02-24T14:50:11.382709",
+    "_id": "proof_140"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "8497e13987dd1f010a502ef0408a7d5ebbf9965f61450f6dcea4e612d1c0b10a",
+    "reading_hash": "848be153ddba74b2ceaa587bce91953254fe8e3bf6b22caa935768f9e0bd80c9",
+    "timestamp": "2026-02-24T14:50:16.437057",
+    "_id": "proof_141"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "e641c11ee09de58464c87cccb6295208935fddf2ca06712ff5718368605d35fb",
+    "reading_hash": "848be153ddba74b2ceaa587bce91953254fe8e3bf6b22caa935768f9e0bd80c9",
+    "timestamp": "2026-02-24T14:50:16.437057",
+    "_id": "proof_142"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "c9f88a0230aca3b5716083fdd93778917aaaf084651f9fa3883cecd30a2ea415",
+    "reading_hash": "848be153ddba74b2ceaa587bce91953254fe8e3bf6b22caa935768f9e0bd80c9",
+    "timestamp": "2026-02-24T14:50:16.437057",
+    "_id": "proof_143"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "d11bc6cd1f7616885b915d8ce3c843c2b4d17eae744c4b68a162a1085ba3a315",
+    "reading_hash": "848be153ddba74b2ceaa587bce91953254fe8e3bf6b22caa935768f9e0bd80c9",
+    "timestamp": "2026-02-24T14:50:16.437057",
+    "_id": "proof_144"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "493ab1b83b1ab3f195e9d46afc558fa6a9d9b65d765ce908fc3aa9e67f2b7dd2",
+    "reading_hash": "848be153ddba74b2ceaa587bce91953254fe8e3bf6b22caa935768f9e0bd80c9",
+    "timestamp": "2026-02-24T14:50:16.437057",
+    "_id": "proof_145"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "f577646ff91496bf49a57a5b5608a68818ad126e42dca08f8492291eb602de11",
+    "reading_hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
+    "timestamp": "2026-02-24T14:50:21.515106",
+    "_id": "proof_146"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "f940fd3df0d5a9268afe47d36f3d75e801aff3886ca0cbb8605d2cce19081637",
+    "reading_hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
+    "timestamp": "2026-02-24T14:50:21.515106",
+    "_id": "proof_147"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "fb3611f4df43fffde29b60352ecb3cd0c4745be9b8993df559d9a18769d6ba5c",
+    "reading_hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
+    "timestamp": "2026-02-24T14:50:21.515106",
+    "_id": "proof_148"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "1ea396a87d4d2f45a1be0dc96dde3a1160d43a19af3e043b4684b44c80d28e4d",
+    "reading_hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
+    "timestamp": "2026-02-24T14:50:21.515106",
+    "_id": "proof_149"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "158ca8c07e7187b3011579770776d988314abb7044a0920a85d25fb213b07921",
+    "reading_hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
+    "timestamp": "2026-02-24T14:50:21.515106",
+    "_id": "proof_150"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "temperature_f",
+    "label": "Body Temperature",
+    "status": "NORMAL",
+    "normal_range": "97.0\u201399.5 \u00b0F",
+    "proof_hash": "32bbf4997df8e5c644b47d513d0597138d6b5c9d636e9fa5ec2263ab863a0b38",
+    "reading_hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
+    "timestamp": "2026-02-24T14:50:26.574900",
+    "_id": "proof_151"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "pulse_bpm",
+    "label": "Heart Rate",
+    "status": "NORMAL",
+    "normal_range": "60\u2013100 BPM",
+    "proof_hash": "45e22e426fbb0b9f434c3580014381eef82ecb0c2173bedff8a8574b03d80637",
+    "reading_hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
+    "timestamp": "2026-02-24T14:50:26.574900",
+    "_id": "proof_152"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "spo2_percent",
+    "label": "Blood Oxygen (SpO2)",
+    "status": "NORMAL",
+    "normal_range": "95\u2013100 %",
+    "proof_hash": "4fac8dd6ef9ee68f04c12ac57eceeda565e206915e7c27e998dc3dcc18580ce8",
+    "reading_hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
+    "timestamp": "2026-02-24T14:50:26.574900",
+    "_id": "proof_153"
+  },
+  {
+    "circuit": "vital_range_check",
+    "vital": "air_quality_ppm",
+    "label": "Air Quality",
+    "status": "NORMAL",
+    "normal_range": "0\u2013400 PPM",
+    "proof_hash": "8a85724422978805da185254090a551c35d5f58be33d655197909535f2c6b95f",
+    "reading_hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
+    "timestamp": "2026-02-24T14:50:26.574900",
+    "_id": "proof_154"
+  },
+  {
+    "circuit": "health_certificate",
+    "score": "4/4",
+    "grade": "A",
+    "all_normal": true,
+    "vitals": {
+      "temperature_f": {
+        "label": "Body Temperature",
+        "status": "NORMAL"
+      },
+      "pulse_bpm": {
+        "label": "Heart Rate",
+        "status": "NORMAL"
+      },
+      "spo2_percent": {
+        "label": "Blood Oxygen (SpO2)",
+        "status": "NORMAL"
+      },
+      "air_quality_ppm": {
+        "label": "Air Quality",
+        "status": "NORMAL"
+      }
+    },
+    "proof_hash": "ca07192dfe36ff17fe38ca3bc6b6b8b856001c445449646b6ea3e03d310bffa5",
+    "reading_hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
+    "timestamp": "2026-02-24T14:50:26.574900",
+    "_id": "proof_155"
   }
 ]

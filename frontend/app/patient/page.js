@@ -5,7 +5,21 @@ import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
 import VitalCard from '../../components/VitalCard';
 import AlertBanner from '../../components/AlertBanner';
-import { Thermometer, Heart, Droplets, Wind, Clock, Activity, ExternalLink } from 'lucide-react';
+import { Thermometer, Heart, Droplets, Wind, Clock, Activity, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Parse UTC timestamp from backend and format as local 12-hour time
+function formatLocalTime(ts) {
+    if (!ts) return '—';
+    try {
+        // Backend stores UTC without 'Z' suffix — append it so Date parses as UTC
+        let str = typeof ts === 'string' ? ts : ts.toString();
+        if (!str.endsWith('Z') && !str.includes('+')) str += 'Z';
+        const d = new Date(str);
+        return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+    } catch {
+        return String(ts);
+    }
+}
 
 export default function PatientDashboard() {
     const [data, setData] = useState(null);
@@ -13,6 +27,8 @@ export default function PatientDashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [page, setPage] = useState(0);
+    const PAGE_SIZE = 10;
 
     const loadData = useCallback(async () => {
         try {
@@ -115,7 +131,7 @@ export default function PatientDashboard() {
                                     <div className="flex items-center gap-4 text-[10px] text-muted-foreground">
                                         <div className="flex items-center gap-1.5">
                                             <Clock size={12} />
-                                            <span className="font-mono">Last: {new Date(data.timestamp).toLocaleTimeString()}</span>
+                                            <span className="font-mono">Last: {formatLocalTime(data.timestamp)}</span>
                                         </div>
                                         <span className="font-semibold text-accent">{anchoredCount} anchored</span>
                                     </div>
@@ -200,48 +216,77 @@ export default function PatientDashboard() {
                                     />
                                 </div>
 
-                                {/* Recent readings */}
-                                <div className="bg-card rounded-lg border border-border">
-                                    <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-                                        <h3 className="text-xs font-semibold text-foreground">Recent Readings</h3>
-                                        <span className="text-[10px] text-muted-foreground">{history.length} total</span>
-                                    </div>
-                                    <div className="overflow-x-auto">
-                                        <table className="w-full text-xs">
-                                            <thead>
-                                                <tr className="border-b border-border">
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Time</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Temp</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">BPM</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">SpO2</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Air</th>
-                                                    <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Chain</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {history.slice(0, 10).map((r, i) => (
-                                                    <tr key={i} className="border-b border-border/50 hover:bg-card-hover transition-colors">
-                                                        <td className="px-4 py-2.5 font-mono text-muted-foreground">{new Date(r.timestamp).toLocaleTimeString()}</td>
-                                                        <td className="px-4 py-2.5 text-foreground">{r.temperature_f ?? '—'}</td>
-                                                        <td className="px-4 py-2.5 text-foreground">{r.pulse_bpm ?? '—'}</td>
-                                                        <td className="px-4 py-2.5 text-foreground">{r.spo2_percent ?? '—'}</td>
-                                                        <td className="px-4 py-2.5 text-foreground">{r.air_quality_ppm ?? '—'}</td>
-                                                        <td className="px-4 py-2.5">
-                                                            {r.anchored ? (
-                                                                <a href={`https://preprod.cardanoscan.io/transaction/${r.cardano_tx_id}`} target="_blank" rel="noopener noreferrer"
-                                                                    className="text-primary hover:text-primary/80 flex items-center gap-1 transition-colors">
-                                                                    Verified <ExternalLink size={10} />
-                                                                </a>
-                                                            ) : (
-                                                                <span className="text-muted-foreground">Pending</span>
-                                                            )}
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                {/* Recent readings with pagination */}
+                                {(() => {
+                                    const totalPages = Math.ceil(history.length / PAGE_SIZE);
+                                    const pageData = history.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+                                    return (
+                                        <div className="bg-card rounded-lg border border-border">
+                                            <div className="px-4 py-3 border-b border-border flex items-center justify-between">
+                                                <h3 className="text-xs font-semibold text-foreground">Recent Readings</h3>
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-[10px] text-muted-foreground">{history.length} total</span>
+                                                    {totalPages > 1 && (
+                                                        <div className="flex items-center gap-1">
+                                                            <button
+                                                                onClick={() => setPage(p => Math.max(0, p - 1))}
+                                                                disabled={page === 0}
+                                                                className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                                                            >
+                                                                <ChevronLeft size={14} />
+                                                            </button>
+                                                            <span className="text-[10px] font-medium text-muted-foreground min-w-[50px] text-center">
+                                                                {page + 1} / {totalPages}
+                                                            </span>
+                                                            <button
+                                                                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                                                                disabled={page >= totalPages - 1}
+                                                                className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                                                            >
+                                                                <ChevronRight size={14} />
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="overflow-x-auto">
+                                                <table className="w-full text-xs">
+                                                    <thead>
+                                                        <tr className="border-b border-border">
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Time</th>
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Temp</th>
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">BPM</th>
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">SpO2</th>
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Air</th>
+                                                            <th className="text-left px-4 py-2.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Chain</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {pageData.map((r, i) => (
+                                                            <tr key={i} className="border-b border-border/50 hover:bg-card-hover transition-colors">
+                                                                <td className="px-4 py-2.5 font-mono text-muted-foreground">{formatLocalTime(r.timestamp)}</td>
+                                                                <td className="px-4 py-2.5 text-foreground">{r.temperature_f ?? '—'}</td>
+                                                                <td className="px-4 py-2.5 text-foreground">{r.pulse_bpm ?? '—'}</td>
+                                                                <td className="px-4 py-2.5 text-foreground">{r.spo2_percent ?? '—'}</td>
+                                                                <td className="px-4 py-2.5 text-foreground">{r.air_quality_ppm ?? '—'}</td>
+                                                                <td className="px-4 py-2.5">
+                                                                    {r.anchored ? (
+                                                                        <a href={`https://preprod.cardanoscan.io/transaction/${r.cardano_tx_id}`} target="_blank" rel="noopener noreferrer"
+                                                                            className="text-primary hover:text-primary/80 flex items-center gap-1 transition-colors">
+                                                                            Verified <ExternalLink size={10} />
+                                                                        </a>
+                                                                    ) : (
+                                                                        <span className="text-muted-foreground">Pending</span>
+                                                                    )}
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
 
                                 {/* Metadata footer */}
                                 <div className="flex flex-wrap items-center justify-between gap-3 text-[10px] text-muted-foreground px-1">
