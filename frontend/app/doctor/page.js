@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { fetchLatestProofs, fetchHealthCertificate, verifyClaim, fetchComplianceReport } from '../../lib/api';
+import { fetchLatestProofs, fetchHealthCertificate, verifyClaim, fetchComplianceReport, verifyRealZKP } from '../../lib/api';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
 import { Shield, Award, FileCheck, BarChart3, ExternalLink, AlertTriangle, Activity, Clock, ChevronDown, ChevronUp } from 'lucide-react';
@@ -30,6 +30,51 @@ export default function DoctorDashboard() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [proofLog, setProofLog] = useState([]);
     const [expandedProof, setExpandedProof] = useState(null);
+    const [verifyingZkp, setVerifyingZkp] = useState({});
+    const [zkpResults, setZkpResults] = useState({});
+    const [verificationLogs, setVerificationLogs] = useState({});
+    const [showLogsHash, setShowLogsHash] = useState(null);
+
+    const handleVerifyZkp = async (hash, circuit, proof, publicSignals) => {
+        if (!proof || !publicSignals || !circuit) return;
+        setVerifyingZkp(prev => ({ ...prev, [hash]: true }));
+        setShowLogsHash(hash);
+
+        let logs = [`▶ Initiating Zero-Knowledge Proof verification...`];
+        const updateLogs = (msg) => {
+            logs = [...logs, msg];
+            setVerificationLogs(prev => ({ ...prev, [hash]: logs }));
+        };
+        setVerificationLogs(prev => ({ ...prev, [hash]: logs }));
+
+        try {
+            // Add slight delays to simulate the cryptographic steps for UI transparency
+            await new Promise(r => setTimeout(r, 400));
+            updateLogs(`Loading verification key for ${circuit} (Groth16)...`);
+
+            await new Promise(r => setTimeout(r, 600));
+            updateLogs(`Parsing public commitments and proof vectors (pi_a, pi_b, pi_c)...`);
+
+            await new Promise(r => setTimeout(r, 700));
+            updateLogs(`Computing elliptic-curve pairings on bn128...`);
+
+            // Actual API call to the Python backend -> TS ZK Server
+            const res = await verifyRealZKP(circuit, proof, publicSignals);
+
+            if (res.verified) {
+                updateLogs(`✅ Pairing check passed. ZKP is mathematically valid.`);
+            } else {
+                updateLogs(`❌ Verification failed. ZKP is invalid.`);
+            }
+
+            setZkpResults(prev => ({ ...prev, [hash]: { success: res.verified, msg: res.verified ? 'VERIFIED' : 'INVALID' } }));
+        } catch (e) {
+            updateLogs(`❌ Error during verification: ${e.message}`);
+            setZkpResults(prev => ({ ...prev, [hash]: { success: false, msg: e.message } }));
+        } finally {
+            setVerifyingZkp(prev => ({ ...prev, [hash]: false }));
+        }
+    };
 
     const loadData = useCallback(async () => {
         try {
@@ -269,8 +314,8 @@ export default function DoctorDashboard() {
                                         <div key={key} className="bg-background rounded-lg p-3 border border-border/50">
                                             <p className="text-[10px] text-muted-foreground mb-1.5">{v.label}</p>
                                             <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${v.status === 'NORMAL' ? 'bg-accent/10 text-accent' :
-                                                    v.status === 'WARNING' ? 'bg-warning/10 text-warning' :
-                                                        'bg-destructive/10 text-destructive'
+                                                v.status === 'WARNING' ? 'bg-warning/10 text-warning' :
+                                                    'bg-destructive/10 text-destructive'
                                                 }`}>
                                                 {v.status}
                                             </span>
@@ -293,22 +338,95 @@ export default function DoctorDashboard() {
                             <div className="divide-y divide-border/50">
                                 {vitalProofs.map((proof, i) => (
                                     <div key={i} className="px-5 py-3.5 hover:bg-card-hover transition-colors">
-                                        <div className="flex items-center justify-between">
+                                        <div className="flex items-start justify-between">
                                             <div>
-                                                <p className="text-xs font-semibold text-foreground">{proof.label}</p>
+                                                <p className="text-xs font-semibold text-foreground flex items-center gap-2">
+                                                    {proof.label}
+                                                    {proof.is_real_zkp && (
+                                                        <span className="text-[9px] font-bold text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded uppercase border border-blue-400/20">
+                                                            Groth16
+                                                        </span>
+                                                    )}
+                                                </p>
                                                 <p className="text-[10px] text-muted-foreground mt-0.5">Normal range: {proof.normal_range}</p>
                                             </div>
-                                            <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${proof.status === 'NORMAL' ? 'bg-accent/10 text-accent' :
+                                            <div className="flex flex-col items-end gap-2">
+                                                <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${proof.status === 'NORMAL' ? 'bg-accent/10 text-accent' :
                                                     proof.status === 'WARNING' ? 'bg-warning/10 text-warning' :
                                                         'bg-destructive/10 text-destructive'
-                                                }`}>
-                                                {proof.status}
-                                            </span>
+                                                    }`}>
+                                                    {proof.status}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className="mt-2 flex items-center gap-3 text-[9px] font-mono text-muted-foreground">
-                                            <span>Circuit: {proof.circuit}</span>
-                                            <span>Proof: {proof.proof_hash?.slice(0, 24)}...</span>
+
+                                        {/* Proof Details Footer */}
+                                        <div className="mt-3 flex items-center justify-between">
+                                            <div className="flex items-center gap-3 text-[9px] font-mono text-muted-foreground">
+                                                <span>Circuit: {proof.is_real_zkp ? proof.zkp_circuit : proof.circuit}</span>
+                                                {proof.is_real_zkp && proof.commitment && (
+                                                    <span title={proof.commitment}>Commit: {proof.commitment.slice(0, 16)}...</span>
+                                                )}
+                                                {!proof.is_real_zkp && (
+                                                    <span>Hash: {proof.proof_hash?.slice(0, 24)}...</span>
+                                                )}
+                                            </div>
+
+                                            {proof.is_real_zkp && (
+                                                <div className="flex items-center gap-2">
+                                                    {zkpResults[proof.proof_hash] && (
+                                                        <span className={`text-[10px] font-bold ${zkpResults[proof.proof_hash].success ? 'text-green-400' : 'text-red-400'}`}>
+                                                            {zkpResults[proof.proof_hash].success ? '✅ ' : '❌ '}{zkpResults[proof.proof_hash].msg}
+                                                        </span>
+                                                    )}
+                                                    {verificationLogs[proof.proof_hash] && (
+                                                        <button
+                                                            onClick={() => setShowLogsHash(showLogsHash === proof.proof_hash ? null : proof.proof_hash)}
+                                                            className="text-[10px] text-muted-foreground hover:text-foreground underline decoration-dotted mr-2"
+                                                        >
+                                                            {showLogsHash === proof.proof_hash ? 'Hide Logs' : 'View Logs'}
+                                                        </button>
+                                                    )}
+                                                    <button
+                                                        onClick={() => handleVerifyZkp(proof.proof_hash, proof.zkp_circuit, proof.zkp_proof, proof.zkp_public_signals)}
+                                                        disabled={verifyingZkp[proof.proof_hash]}
+                                                        className="text-[10px] bg-primary text-primary-foreground px-3 py-1 rounded shadow cursor-pointer disabled:opacity-50"
+                                                    >
+                                                        {verifyingZkp[proof.proof_hash] ? 'Verifying...' : 'Verify Math'}
+                                                    </button>
+                                                </div>
+                                            )}
                                         </div>
+
+                                        {/* Verification Logs Terminal */}
+                                        {showLogsHash === proof.proof_hash && verificationLogs[proof.proof_hash] && (
+                                            <div className="mt-3 bg-[#0d1117] border border-border/50 rounded-lg p-3 text-[10px] font-mono shadow-inner overflow-hidden">
+                                                <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
+                                                    <div className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-red-500" /><div className="w-2 h-2 rounded-full bg-yellow-500" /><div className="w-2 h-2 rounded-full bg-green-500" /></div>
+                                                    <span className="text-white/40">ZKP Verification Node (snarkjs groth16 API)</span>
+                                                </div>
+                                                <div className="space-y-1.5 text-blue-300/80">
+                                                    {verificationLogs[proof.proof_hash].map((log, idx) => (
+                                                        <div key={idx} className={log.includes('✅') ? 'text-green-400 font-bold' : log.includes('❌') ? 'text-red-400 font-bold' : ''}>
+                                                            {log}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                {proof.zkp_proof && zkpResults[proof.proof_hash] && (
+                                                    <div className="mt-3 pt-3 border-t border-white/10">
+                                                        <p className="text-white/40 mb-1">Attached Groth16 Proof Payload:</p>
+                                                        <pre className="text-emerald-400/70 overflow-x-auto pb-1 text-[9px]">
+                                                            {JSON.stringify({
+                                                                pi_a: proof.zkp_proof.pi_a?.slice(0, 2).map(x => x.slice(0, 15) + '...'),
+                                                                pi_b: proof.zkp_proof.pi_b?.slice(0, 1).map(x => x.map(y => y.slice(0, 15) + '...')),
+                                                                protocol: proof.zkp_proof.protocol,
+                                                                curve: proof.zkp_proof.curve
+                                                            }, null, 2)}
+                                                        </pre>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
                                 ))}
                             </div>

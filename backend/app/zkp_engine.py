@@ -13,6 +13,7 @@ The proof_hash is anchored on Cardano — nobody can fake it.
 """
 import hashlib
 import json
+import requests
 from datetime import datetime
 from typing import List, Dict, Optional
 
@@ -97,25 +98,96 @@ def _classify_vital(vital_name: str, value: float) -> str:
 
 
 # ============================================================
+#  ZKP SERVER INTEGRATION
+# ============================================================
+
+ZK_SERVER_URL = "http://127.0.0.1:9000"
+
+def prove_via_zk_server(circuit_name: str, payload: dict) -> Optional[dict]:
+    """Call the local ZK Server to generate a real Groth16 proof."""
+    try:
+        r = requests.post(f"{ZK_SERVER_URL}/zk/prove/{circuit_name}", json=payload, timeout=10)
+        if r.status_code == 200:
+            return r.json()
+        print(f"ZK Server warning ({circuit_name}): {r.text}")
+    except Exception as e:
+        print(f"ZK Server error ({circuit_name}): {e}")
+    return None
+
+
+# ============================================================
 #  CIRCUIT 1: vital_range_check
 #  Doctor wants to know: is this ONE vital okay?
 # ============================================================
 
-def vital_range_check(vital_name: str, value: float, reading_hash: str) -> dict:
+def vital_range_check(vital_name: str, value: float, reading_hash: str, ts_iso: str) -> dict:
     """
     Check if a single vital is in normal/warning/critical range.
     
     PRIVATE input: value (hidden from doctor)
-    PUBLIC output: status (NORMAL/WARNING/CRITICAL) + proof_hash
+    PUBLIC output: status (NORMAL/WARNING/CRITICAL) + real Groth16 proof
     """
     status = _classify_vital(vital_name, value)
     t = THRESHOLDS.get(vital_name, {})
 
-    proof_hash = _generate_proof_hash("vital_range_check", {
-        "vital": vital_name,
-        "value": value,
-        "reading_hash": reading_hash,
-    })
+    # Simulate patient ID and timestamp for the proof
+    patient_id = "123456789"
+    # Convert ISO to unix timestamp bucket roughly
+    try:
+        ts = str(int(datetime.fromisoformat(ts_iso.replace('Z', '+00:00')).timestamp()))
+    except:
+        ts = "1700000000"
+        
+    # Convert reading hash from hex to decimal string for Circom Field Math
+    try:
+        reading_hash_dec = str(int(reading_hash[:15], 16)) # use first 15 chars to fit in field
+    except:
+        reading_hash_dec = "777777"
+
+    zk_data = None
+
+    # Map our backend vital names to the ZK circuits
+    if vital_name == "spo2_percent":
+        zk_data = prove_via_zk_server("spo2_ge", {
+            "spo2": int(value),
+            "minSpo2": 95,
+            "patientId": patient_id,
+            "ts": ts,
+            "readingHash": reading_hash_dec
+        })
+    elif vital_name == "pulse_bpm":
+        zk_data = prove_via_zk_server("bpm_range", {
+            "bpm": int(value),
+            "minBpm": 60,
+            "maxBpm": 100,
+            "patientId": patient_id,
+            "ts": ts,
+            "readingHash": reading_hash_dec
+        })
+    elif vital_name == "temperature_f":
+        zk_data = prove_via_zk_server("temp_range_f10", {
+            "temp10": int(value * 10),
+            "minTemp10": 970,
+            "maxTemp10": 995,
+            "patientId": patient_id,
+            "ts": ts,
+            "readingHash": reading_hash_dec
+        })
+
+    # Fallback to simulated proof hash if ZK server fails or unsupported vital
+    if zk_data and "proof" in zk_data:
+        proof_payload = zk_data["proof"]
+        public_signals = zk_data["publicSignals"]
+        is_real_zkp = True
+        # Extract commitment (usually the last or first public signal, assume last)
+        commitment = public_signals[-1] if public_signals else None
+    else:
+        proof_payload = _generate_proof_hash("vital_range_check", {
+            "vital": vital_name, "value": value, "reading_hash": reading_hash
+        })
+        public_signals = []
+        is_real_zkp = False
+        commitment = None
 
     return {
         "circuit": "vital_range_check",
@@ -123,10 +195,15 @@ def vital_range_check(vital_name: str, value: float, reading_hash: str) -> dict:
         "label": t.get("label", vital_name),
         "status": status,
         "normal_range": f"{t['normal'][0]}–{t['normal'][1]} {t.get('unit', '')}",
-        "proof_hash": proof_hash,
+        "proof_hash": proof_payload if not is_real_zkp else "ZKP_ATTACHED",
+        "zkp_proof": proof_payload if is_real_zkp else None,
+        "zkp_public_signals": public_signals if is_real_zkp else None,
+        "commitment": commitment,
+        "is_real_zkp": is_real_zkp,
+        "zkp_circuit": zk_data["circuit"] if is_real_zkp else None,
         "reading_hash": reading_hash,
         "timestamp": datetime.utcnow().isoformat(),
-        # Raw value is NOT included — that's the zero-knowledge part
+        # Raw value is NOT included!
     }
 
 
@@ -314,10 +391,11 @@ def generate_all_proofs(reading: dict, reading_hash: str, cardano_tx_id: Optiona
     proofs = []
 
     # Circuit 1: Individual vital checks
+    ts_iso = reading.get("timestamp", datetime.utcnow().isoformat())
     for vital_name in ["temperature_f", "pulse_bpm", "spo2_percent", "air_quality_ppm"]:
         value = reading.get(vital_name)
         if value is not None:
-            proof = vital_range_check(vital_name, value, reading_hash)
+            proof = vital_range_check(vital_name, value, reading_hash, str(ts_iso))
             proofs.append(proof)
 
     # Circuit 2: Combined health certificate

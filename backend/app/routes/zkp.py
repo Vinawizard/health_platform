@@ -10,7 +10,9 @@ Endpoints:
   GET  /proofs/verify/{proof_hash} — Verify a specific proof
 """
 from fastapi import APIRouter, HTTPException, Query
-from typing import Optional
+from typing import Optional, List, Any
+import requests
+from pydantic import BaseModel
 
 from ..database import STORAGE_MODE
 from ..zkp_engine import (
@@ -177,6 +179,29 @@ async def get_all_proofs():
         "total": len(proofs),
         "proofs": proofs,
     }
+
+
+class ZKPVerifyRequest(BaseModel):
+    circuit: str
+    proof: dict
+    publicSignals: List[str]
+
+
+@router.post("/verify-zkp")
+async def verify_real_zkp(req: ZKPVerifyRequest):
+    """
+    Verify a real Groth16 ZKP by passing it to the ZK Server.
+    """
+    try:
+        r = requests.post(f"http://127.0.0.1:9000/zk/verify/{req.circuit}", json={
+            "proof": req.proof,
+            "publicSignals": req.publicSignals
+        }, timeout=5)
+        if r.status_code == 200:
+            return r.json()
+        raise HTTPException(status_code=400, detail=r.text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"ZK Server Error: {str(e)}")
 
 
 @router.get("/verify/{proof_hash}")

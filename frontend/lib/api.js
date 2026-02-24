@@ -43,3 +43,16 @@ export async function fetchAvailableClaims() {
     if (!res.ok) throw new Error('Failed to fetch claims');
     return res.json();
 }
+
+export async function verifyRealZKP(circuit, proof, publicSignals) {
+    const res = await fetch(`${API_BASE}/proofs/verify-zkp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ circuit, proof, publicSignals })
+    });
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || 'Verification failed');
+    }
+    return res.json();
+}
