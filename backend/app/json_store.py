@@ -63,6 +63,23 @@ def update_latest_reading(update_fields: dict):
         _write_file("sensor_readings.json", records)
 
 
+def update_reading_by_hash(record_hash: str, update_fields: dict) -> bool:
+    """Update a specific reading by its hash. Returns True if found."""
+    records = _read_file("sensor_readings.json")
+    for r in records:
+        if r.get("hash") == record_hash:
+            r.update(update_fields)
+            _write_file("sensor_readings.json", records)
+            return True
+    return False
+
+
+def get_pending_readings() -> List[dict]:
+    """Get all readings that haven't been anchored on-chain yet."""
+    records = _read_file("sensor_readings.json")
+    return [r for r in records if r.get("hash") and not r.get("anchored")]
+
+
 # ---- Chain Events ----
 
 def save_chain_event(event: dict) -> str:

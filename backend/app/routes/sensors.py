@@ -11,6 +11,7 @@ from ..database import STORAGE_MODE, sensor_collection
 from ..crypto_utils import generate_dek, encrypt_payload, encrypt_dek, hash_reading, decrypt_payload
 from ..cardano_anchoring import anchor_hash_on_cardano
 from ..zkp_engine import generate_all_proofs
+from ..tx_queue import enqueue_anchoring, enqueue_pending, get_queue_status
 
 router = APIRouter()
 
@@ -53,22 +54,8 @@ async def _get_history(limit: int = 50):
         cursor = sensor_collection.find({}).sort("timestamp", -1).limit(limit)
         return await cursor.to_list(length=limit)
 
-
-# ---- Background task: anchor on Cardano then update record ----
-
-async def _anchor_and_update(record_hash: str, timestamp_str: str, record_id):
-    """Background: anchor hash on Cardano, then update the stored record with tx_hash."""
-    tx_hash = await anchor_hash_on_cardano(record_hash, timestamp_str)
-    if tx_hash:
-        await _update_latest({"anchored": True, "cardano_tx_id": tx_hash}, record_id)
-        # Also save as a chain event
-        if STORAGE_MODE == "json":
-            from ..json_store import save_chain_event
-            save_chain_event({
-                "record_hash": record_hash,
-                "tx_hash": tx_hash,
-                "timestamp": timestamp_str,
-            })
+# Note: old _anchor_and_update is replaced by tx_queue module
+# which serializes Cardano transactions to prevent UTxO contention
 
 
 # ---- Routes ----
@@ -147,8 +134,8 @@ async def create_sensor_data(data: PartialSensorData, background_tasks: Backgrou
             from ..json_store import save_proofs
             save_proofs(proofs)
 
-        # 9. Queue Cardano anchoring in background (doesn't block the ESP32)
-        background_tasks.add_task(_anchor_and_update, record_hash, now.isoformat(), record_id)
+        # 9. Queue Cardano anchoring via serial tx queue (prevents UTxO contention)
+        await enqueue_anchoring(record_hash, now.isoformat(), record_id)
 
         return {
             "message": f"Sensor data saved. {proof_count} ZKP proofs generated. Blockchain anchoring queued.",
@@ -216,3 +203,21 @@ async def verify_record(record_hash: str):
                 "verify_url": f"https://preprod.cardanoscan.io/transaction/{r.get('cardano_tx_id')}" if r.get("cardano_tx_id") else None,
             }
     raise HTTPException(status_code=404, detail="Record hash not found")
+
+
+@router.post("/retry-pending")
+async def retry_pending():
+    """Re-queue all pending (unanchored) readings for Cardano anchoring."""
+    count = await enqueue_pending()
+    status = get_queue_status()
+    return {
+        "message": f"Re-queued {count} pending readings for anchoring",
+        "pending_count": count,
+        "queue": status,
+    }
+
+
+@router.get("/tx-queue-status")
+async def tx_queue_status():
+    """Get the current transaction queue status."""
+    return get_queue_status()

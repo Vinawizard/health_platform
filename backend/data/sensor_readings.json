@@ -111,8 +111,8 @@
     "nonce": "C2+izn4SQLfvMXcw",
     "encrypted_dek": "E3YIDRi12PmJn1NHIb6qCZhjjy2Uje/RwSTTPh6oEqhCLi4tKxxYK4BItAfxgVUjKKa8OpSXXPECz+vN",
     "hash": "7b7b6cb58155995b6f00c2876b18d2bff92756a56c260b2617d4e60fd91d26ec",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "cd5ed8438ba6d43e2510ff69afb74182945e67e8d16d704e043daba89fb4f727",
     "_id": "local_1"
   },
   {
@@ -609,8 +609,8 @@
     "nonce": "VhuMHlZEexPnxGNr",
     "encrypted_dek": "P+MhZCTATClXlgDGzQNfDWeyICLtopEQ/OOImXbHYklQoNk+arq9cOx63Z3XrLQqqOafI2W0F5sFJ8ox",
     "hash": "931861ff0f5ebac231f074ebca3964167a62d49ba0d6b49cbc672bc88f206f2f",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "c3cbeea3121ba33992ed1a46cf1a1d962a65fd1688960c7e3c2db409145918ef",
     "_id": "local_7"
   },
   {
@@ -725,8 +725,8 @@
     "nonce": "7XaBQb4sggNH4pCd",
     "encrypted_dek": "oUaDN5cpa6Lzo3BxliozI0XyPCjIUxJ0E3DtF5L5sj6KEkyjd5bpL0ZpiMHZvJpjIPzPlEqtYhbiKeFk",
     "hash": "16d84de89166ebe12af2f05de6c362e781cfa353efb9a13a90c42ac294ee6019",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "68f09e18965191527272ee90cb585998296a6631fd82f30bd39f5e7adf586255",
     "_id": "local_8"
   },
   {
@@ -841,8 +841,8 @@
     "nonce": "tZ0tqSrKLeS7tgwH",
     "encrypted_dek": "1h6DwdlvIUny4jE+qYOk99VAER5DxechVFmzjmLnnYX1RxSa+khf1dOmvxSAavqgC1nH4DgeKBZEYkzF",
     "hash": "293cc7e39b87da749f0a7f6d25d1aa6220599abdcafc027aa55c0ec61d981b9f",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "b6812588cf1406cc9d829a8d61d7d0b705f1c140f9ddadcc7f4d7eded7d9ab8a",
     "_id": "local_9"
   },
   {
@@ -957,8 +957,8 @@
     "nonce": "NXcHRB2zZhJilQL5",
     "encrypted_dek": "j5edwJTLlaFbuKK4U945QolGpTtb0xBt/2h33RsQH9wYOeWIzjSui6C+MN68RvjE9QbQtApU/vrX3Dbd",
     "hash": "83a2e129546103b7fb7401a161056d2a614be7afc94078d8fa8455136d96eadc",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "cdc8b8dfe7d8eb473ef3e63edd25d57f5cff21dd03518676ba43e8f5c8af1bc5",
     "_id": "local_10"
   },
   {
@@ -1189,8 +1189,8 @@
     "nonce": "o2cHdwyCRQiOPbOq",
     "encrypted_dek": "4o0lIFIg5BYlHgyOlUakOUVXDOON279ih9ADMrNdUaUhMYuICxrHpoDbpoGiYf2QODkD+trOun4rq3JZ",
     "hash": "367d6011d4777bd507f3ca765d9d893edcf75a4549c914f0b9cd0636b993b6a3",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "5b5b64db48361f032ae61db5bcc367de3b2b062a91837382cb30777909b8b83e",
     "_id": "local_12"
   },
   {
@@ -1305,8 +1305,8 @@
     "nonce": "friQeTWX2e99/WxX",
     "encrypted_dek": "hntvZ9CbRfYWJmEdcbniQTrW+WTXPbJ2N86LlUOjMDA5t+o3KdbE6+fKyv8uKoNPSroe6wPL8X3HZ4mW",
     "hash": "79cda4026c8e845b554ffd0fa5d2fc7f91b88dfb1f5be7c11aae00f538ae3a26",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "6e94c1f755ad65e2ec2de04334725f1a8504697ee3b1214e46d8b12139a20ba9",
     "_id": "local_13"
   },
   {
@@ -1537,8 +1537,8 @@
     "nonce": "1fSJB4I8s7PdKnTC",
     "encrypted_dek": "+gWKqyQCrjf27Rsb50GR3DFtdtCFay42geri6qAmL+s4As3rfS52DP5T3ypnrhGfBYUtYMkC++k7s73N",
     "hash": "ec6c6fd705fb69f469c4f566016c88def7b5d39213c9af6ef1a75269161c2958",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "f61e9bce15c416be47d5bd9a7fb3565398d92cd1559be4f3937cce6165d5079e",
     "_id": "local_15"
   },
   {
@@ -1653,8 +1653,8 @@
     "nonce": "14WLxgiVj5euFRcu",
     "encrypted_dek": "BsSy3C/IeASF3IwvIGbjiTnTfc+9/nowl+YTY703klsJoMHJhUzshFtbbAFV5WfhzF6N0svBn0kO3Xpg",
     "hash": "61d4bbacb8a320bfc770292764d523e9891d38fad5dd5dd608d9944e2bcaa5fc",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "4feb75d0e0bafee0c78dfb3f39208038c6e5c8b307c8fd434667f8b29f523bfe",
     "_id": "local_16"
   },
   {
@@ -1885,8 +1885,8 @@
     "nonce": "37xFqjIlib7cLRXq",
     "encrypted_dek": "xlE67J9h9kWyrWwJOCcdgBBWni9QdNpK3+d5nuD0Iv6Yi1P4fVqZZZFV8T7fUMvJWilpRANEvkdQarS/",
     "hash": "a26fee86d0c6c8276e0d6141a3a540ffead65d441f05f18973e5329cf649e1ff",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "0dd5abde4e6789944ff7baac5c4919a9e5916a2a8496018a0d6b5afa94292043",
     "_id": "local_18"
   },
   {
@@ -2233,8 +2233,8 @@
     "nonce": "0xU5T/fSlxmcW85H",
     "encrypted_dek": "LqxoUie8uaDGhGRArsMeEG9V/xRarLwJes8cipBU6iE8nhqD8a7nQ9K44LUdRgu/3cyEOsmZsrqxOUO+",
     "hash": "b8b9ebd2683c789a1d56704e3e2375cf6e0676d7e4d07cb18287e665434c03c0",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "2602240e0a9c4a94f27e065549538aee1ba5831778da8b13de7318b2f9f975b2",
     "_id": "local_21"
   },
   {
@@ -3045,8 +3045,8 @@
     "nonce": "cpkpCX8ZkhquJId9",
     "encrypted_dek": "A6bt0YNsqFggwSKKLv23huCv6zC1PJWLyeuMu3HVVqdQK7E2EcS4IQMsJx/e2eKcedduuE4bd0QpDGqZ",
     "hash": "d341dd2f47f4e386e189d1bdd8aec3086fa46ff18d1544c71437b0665de02232",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "1535bd373a971d7fe3101e627c77d35b8c91d5229f0b8a0d1becc183e6a4595a",
     "_id": "local_28"
   },
   {
@@ -3161,8 +3161,8 @@
     "nonce": "MDjdm78rNK/5vlq4",
     "encrypted_dek": "vKY9QSRE6ZDCyUyjEQ81AEaGuLjxkJIO4PL9CPKMQqZ7qlgBsoDeG/hSSzmDs/Hd9SMH7BUzH4ps7fWN",
     "hash": "9cfd6e27eb3f8ca6b91d22bbafabd1de79c5b759d9d221438505944844899ae1",
-    "anchored": false,
-    "cardano_tx_id": null,
+    "anchored": true,
+    "cardano_tx_id": "f4f809aa7dc1f87ca76044a36e961f3712a4f8c9bb6232633d5350d407b50003",
     "_id": "local_29"
   }
 ]
